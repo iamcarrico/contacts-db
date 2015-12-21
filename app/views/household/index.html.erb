@@ -1,0 +1,27 @@
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Household name</th>
+      <th>Head of House</th>
+      <th>Address</th>
+      <th>Last Updated</th>
+      <th>More</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @households.each do |household| %>
+      <tr>
+        <td><%= household.label %></td>
+        <td><%= "#{household.head_of_house.first_name} #{household.head_of_house.last_name}" %></td>
+        <td></td>
+        <td><%= household.updated_at.strftime('%b %e, %l:%M %p') %></td>
+        <td><%= link_to 'More', household_path(household)  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <%= will_paginate @households %>
+
+</table>
